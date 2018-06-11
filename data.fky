@@ -1,0 +1,54 @@
+database mydb
+
+table School id
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12chongfu
+10011
+
+table User id name identity password School
+1 WJH 1 asdfasdf 1
+2 LWB 3 asdfasdf 1
+
+table User name identity password School
+FKY 1 asdf 2
+aaa 2 aaaa 4
+bbb 3 aabb 3
+ccc 3 cccc 3
+ddd 3 dddd 3 *5
+eee 3 {str,3} 3 *2
+
+table Project id property leader passBy
+1 2 3 4
+2 3 3 5
+
+table Project property leader passBy
+2 4 4
+1 3 5
+
+table Asset assetID owner value category amount
+1 3 45 2 3
+2 3 45 5 3
+3 1 34 5 5
+4 1 111 2 10
+5 2 120 3 1
+6 4 130 2 1
+7 5 110 1 1
+8 5 1500 1 1
+9 3 23 2 5
+10 3 344 3 1
+
+table ProjectHistory ProjectId ifPass verifyBy
+3 0 3
+3 0 1
+2 1 1
+
