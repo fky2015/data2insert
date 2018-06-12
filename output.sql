@@ -20,4 +20,4 @@ insert into User(id,name,identity,password,School) values(2,'LWB',3,'asdfasdf',1
 insert into User(name,identity,password,School) values('FKY',1,'asdf',2);
 insert into User(name,identity,password,School) values('aaa',2,'aaaa',4);
 insert into User(name,identity,password,School) values('bbb',3,'aabb',3);
-insert into User(name,identity,password,School) values('4L14I',3,'xaMtmhd8WD72',11011010111001110001100);
+insert into User(name,identity,password,School) values('bW6qY',3,'yj37fjk0WSc4',00001111101101010101011);

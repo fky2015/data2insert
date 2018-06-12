@@ -9,17 +9,20 @@ import fileinput
 import re
 from string import Template
 
+def gen_rand_sample(sample : str,len : int):
+    '被gen_rand调用，生成抽样结果'
+    return ''.join([random.sample(sample, 1)[0] for i in range(len)])
 
 def gen_rand(output_type=0, len=5):
     "随机生成固定长度的字符串或者数字"
     # 0 -> str, 1 -> int
     output_type=output_type.lower()
     if output_type == 0 or output_type == 'str':
-        return ''.join([random.sample(string.ascii_letters+string.digits, 1)[0] for i in range(len)])
+        return gen_rand_sample(string.ascii_letters+string.digits,len)
     elif output_type == 1 or output_type == 'int':
-        return ''.join([random.sample(string.digits, 1)[0] for i in range(len)])
+        return gen_rand_sample(string.digits,len)
     elif output_type == 'byte':
-        return ''.join([random.sample('01', 1)[0] for i in range(len)])
+        return gen_rand_sample('01',len)
     else:
         raise TypeError('只能输入0或1')
 
