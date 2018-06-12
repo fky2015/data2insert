@@ -13,10 +13,13 @@ from string import Template
 def gen_rand(output_type=0, len=5):
     "随机生成固定长度的字符串或者数字"
     # 0 -> str, 1 -> int
+    output_type=output_type.lower()
     if output_type == 0 or output_type == 'str':
         return ''.join([random.sample(string.ascii_letters+string.digits, 1)[0] for i in range(len)])
     elif output_type == 1 or output_type == 'int':
         return ''.join([random.sample(string.digits, 1)[0] for i in range(len)])
+    elif output_type == 'byte':
+        return ''.join([random.sample('01', 1)[0] for i in range(len)])
     else:
         raise TypeError('只能输入0或1')
 
@@ -28,7 +31,7 @@ def gen_sub_func(a):
 
 def gen_pro(input_item):
     "处理标记文本"
-    return re.sub(r"{(str|int),(\d+)}", gen_sub_func, input_item)
+    return re.sub(r"{(\w+),(\d+)}", gen_sub_func, input_item)
 
 
 file = [sys.argv[1] if len(sys.argv) > 1 else input('请输入文件路径')]
@@ -51,6 +54,7 @@ with open('output.sql', 'w') as outputfile:
                 elif line[0] == 'table':
                     tablename, columns = line[1], line[2:]
                     outputfile.write('\n')
+                    print()
                 else:
                     print('wrong input !!!')
                     exit(1)
@@ -77,6 +81,6 @@ with open('output.sql', 'w') as outputfile:
                         '('+','.join(columns)+') values(' + \
                           ','.join(final_sub_columns)+');\n'
                     outputfile.write(sql)
-                    print(sql)
+                    print(sql,end='')
 
             beginofblock = 0
